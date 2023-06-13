@@ -1,0 +1,89 @@
+#!/bin/bash
+
+echo '#!/bin/bash' > 0-hello_world
+echo "echo 'Hello, World'" >> 0-hello_world
+chmod u+x 0-hello_world
+
+echo '#!/bin/bash' > 1-confused_smiley
+echo "echo \"\\\"(Ôo)'\"" >> 1-confused_smiley
+chmod u+x 1-confused_smiley
+
+echo '#!/bin/bash' > 2-hellofile
+echo "cat /etc/passwd" >> 2-hellofile
+chmod u+x 2-hellofile
+
+echo '#!/bin/bash' > 3-twofiles
+echo "cat /etc/passwd /etc/hosts" >> 3-twofiles
+chmod u+x 3-twofiles
+
+echo '#!/bin/bash' > 4-lastlines
+echo "tail /etc/passwd" >> 4-lastlines
+chmod u+x 4-lastlines
+
+echo '#!/bin/bash' > 5-firstlines
+echo "head /etc/passwd" >> 5-firstlines
+chmod u+x 5-firstlines
+
+echo '#!/bin/bash' > 6-third_line
+echo "head -n 3 iacta | tail -n 1" >> 6-third_line
+chmod u+x 6-third_line
+
+echo '#!/bin/bash' > 8-cwd_state
+echo "ls -la > ls_cwd_content" >> 8-cwd_state
+chmod u+x 8-cwd_state
+
+echo '#!/bin/bash' > 9-duplicate_last_line
+echo "tail -n 1 iacta >> iacta" >> 9-duplicate_last_line
+chmod u+x 9-duplicate_last_line
+
+echo '#!/bin/bash' > 10-no_more_js
+echo "find ~ -type f -name \"*.js\" -delete" >> 10-no_more_js
+chmod u+x 10-no_more_js
+
+echo '#!/bin/bash' > 11-directories
+echo "find ~ -type d | wc -l" >> 11-directories
+chmod u+x 11-directories
+
+echo '#!/bin/bash' > 12-newest_files
+echo "ls -lt | head" >> 12-newest_files
+chmod u+x 12-newest_files
+
+echo '#!/bin/bash' > 13-unique
+echo "uniq $FILE" >> 13-unique
+chmod u+x 13-unique
+
+echo '#!/bin/bash' > 14-findthatword
+echo "grep root /etc/passwd" >> 14-findthatword
+chmod u+x 14-findthatword
+
+echo '#!/bin/bash' > 15-countthatword
+echo "grep bin /etc/passwd | wc -l" >> 15-countthatword
+chmod u+x 15-countthatword
+
+echo '#!/bin/bash' > 16-whatsnext
+echo "grep -A 3 root /etc/passwd" >> 16-whatsnext
+chmod u+x 16-whatsnext
+
+echo '#!/bin/bash' > 17-hidethisword
+echo "grep -v bin /etc/passwd" >> 17-hidethisword
+chmod u+x 17-hidethisword
+
+echo '#!/bin/bash' > 18-letteronly
+echo "grep ^[[:alpha:]] /etc/ssh/sshd_config" >> 18-letteronly
+chmod u+x 18-letteronly
+
+echo '#!/bin/bash' > 19-AZ
+echo "tr \"Ac\" \"Ze\"" >> 19-AZ
+chmod u+x 19-AZ
+
+echo '#!/bin/bash' > 20-hiago
+echo "tr -d \"cC\"" >> 20-hiago
+chmod u+x 20-hiago
+
+echo '#!/bin/bash' > 21-reverse
+echo "rev" >> 21-reverse
+chmod u+x 21-reverse
+
+echo '#!/bin/bash' > 22-users_and_homes
+echo "cat /etc/passwd | sort" >> 22-users_and_homes
+chmod u+x 22-users_and_homes
