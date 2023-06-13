@@ -1,4 +1,0 @@
-#!/bin/bash
-git add .
-git commit -m 'All the tasks except for nomber 7'
-git push origin master
