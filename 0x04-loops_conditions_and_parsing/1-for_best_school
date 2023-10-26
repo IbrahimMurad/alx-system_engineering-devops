@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# This script prints Best School 10 times
+# This script prints Best School 10 times using for loop
 
 for ((i=0;i<10;i+=1)); do echo "Best School"; done
