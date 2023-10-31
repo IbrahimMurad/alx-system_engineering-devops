@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# a Bash script that stops 7-highlander process unconditionally
-
-pkill -f --signal SIGKILL ./100-process_and_pid_file
