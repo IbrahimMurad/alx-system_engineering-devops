@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# this script establishes a connection with the localhost
+# and prepare to to listen from telnet
+
+nc -l 127.0.0.1 98
