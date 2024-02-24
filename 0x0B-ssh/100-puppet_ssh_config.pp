@@ -1,5 +1,7 @@
 # set up client SSH configuration file so that he can connect to a server without typing a password.
 
+include stdlib
+
 file_line { 'ssh config':
   ensure => present,
   path   => '/etc/ssh/ssh_config',
