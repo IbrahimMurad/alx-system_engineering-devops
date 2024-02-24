@@ -3,14 +3,14 @@
 file_line { 'ssh config':
   ensure => present,
   path   => '/etc/ssh/ssh_config',
-  line   => '^\#\ \ \ \ IdentityFile',
-  match  => '^\#\ \ \ \ IdentityFile\ \~/\.ssh/school',
+  line   => '#    IdentityFile',
+  match  => '#    IdentityFile ~/.ssh/school',
 }
 
 
 file_line { 'ssh config':
   ensure => present,
   path   => '/etc/ssh/ssh_config',
-  line   => '^\#\ \ \ PasswordAuthentication',
-  match  => '^\#\ \ \ PasswordAuthentication\ no',
+  line   => '^#   PasswordAuthentication',
+  match  => '^#   PasswordAuthentication no',
 }
