@@ -2,17 +2,17 @@
 
 include stdlib
 
-file_line { 'ssh config':
+
+file_line { 'Turn off passwd auth':
   ensure => present,
   path   => '/etc/ssh/ssh_config',
-  line   => '#    IdentityFile',
-  match  => '#    IdentityFile ~/.ssh/school',
+  line   => '^#   PasswordAuthentication no',
+  match  => '^#   PasswordAuthentication',
 }
 
-
-file_line { 'ssh config':
+file_line { 'Declare identity file':
   ensure => present,
   path   => '/etc/ssh/ssh_config',
-  line   => '^#   PasswordAuthentication',
-  match  => '^#   PasswordAuthentication no',
+  line   => '^#    IdentityFile ~/.ssh/school',
+  match  => '^#    IdentityFile',
 }
