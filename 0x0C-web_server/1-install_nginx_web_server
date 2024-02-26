@@ -6,6 +6,6 @@
 
 apt-get update
 apt-get -y install nginx
-sed -i 's/\tlisten [0:9]*;/\tlisten 80 default_server;/' /etc/nginx/availabel-sites/default
-sed -i 's/\tlisten \[::\]:[0:9]*;/\tlisten [::]:80 default_server;/' /etc/nginx/availabel-sites/default
+ufw allow '	Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+service nginx start
