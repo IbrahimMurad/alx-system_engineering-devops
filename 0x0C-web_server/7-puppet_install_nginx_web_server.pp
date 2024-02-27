@@ -16,7 +16,7 @@ package { 'ufw':
 }
 
 exec { 'listen to 80':
-  command => '/usr/sbin/ufw allow "Nginx HTTP"',
+  command => '/usr/sbin/ufw allow Nginx HTTP',
   require => Package['ufw', 'nginx'],
 }
 
@@ -24,5 +24,5 @@ file { 'main page':
   path    => '/var/www/html/index.nginx-debian.html',
   ensure  => present,
   require => Package['nginx'],
-  content => 'Hello World!',
+  content => 'Hello World!"\n"',
 }
