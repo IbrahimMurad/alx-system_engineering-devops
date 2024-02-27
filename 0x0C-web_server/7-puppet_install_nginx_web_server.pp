@@ -21,16 +21,16 @@ exec { 'listen to 80':
 }
 
 file { 'main page':
-  path    => '/var/www/html/index.nginx-debian.html',
   ensure  => present,
+  path    => '/var/www/html/index.nginx-debian.html',
   require => Package['nginx'],
   content => 'Hello World!"\n"',
 }
 file_line { 'redirect_me':
   ensure => present,
   path   => '/etc/nginx/sites-enabled/default',
-  match   => '^\nserver_name _;',
-  line  => "	server_name _;
+  match  => '^\nserver_name _;',
+  line   => "	server_name _;
 
 	location /redirect_me {
 
