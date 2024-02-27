@@ -14,14 +14,16 @@ package { 'ufw'
   ensure => latest,
 }
 
-exec { 'ufw allow "Nginx HTTP"'
-  require => Package['ufw'],
+exec { 'listen to 80'
+  command => 'ufw allow "Nginx HTTP"',
+  require => Package['ufw', 'nginx'],
 }
 
-file { '/var/www/html/index.nginx-debian.html'
+file { 'main page'
+  path    => '/var/www/html/index.nginx-debian.html',
   ensure  => present,
   require => Package['nginx'],
-  content => 'Hello World!'
+  content => 'Hello World!',
 }
 
 file_line { 'redirect_me':
