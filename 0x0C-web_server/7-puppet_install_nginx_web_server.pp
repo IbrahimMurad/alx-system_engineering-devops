@@ -4,18 +4,7 @@
 #     it must return a page that contains the string Hello World!
 #   The redirection must be a “301 Moved Permanently”
 
-include stdlib
-
-package { 'nginx':
-  ensure   => latest,
-  provider => 'apt',
-}
-
-package { 'ufw':
-  ensure => latest,
-}
-
-exec { 'listen to 80':
-  command => '/usr/sbin/ufw allow \'Nginx HTTP\'',
-  require => Package['ufw', 'nginx'],
+exec { 'setup':
+  provider => shell,
+  command  => 'apt-get update; apt-get -y install nginx; ufw allow "Nginx HTTP"; echo "Hello World!" > /var/www/html/index.nginx-debian.html; sed -i "s/\tserver_name _;/\tserver_name _;\n\n\tlocation \/redirect_me {\n\n\t\treturn 301 https:\/\/www.youtube.com;\n\n\t}\n/" /etc/nginx/sites-enabled/default; service nginx restart',
 }
