@@ -28,5 +28,5 @@ file_line { 'redirect_me':
   ensure => present,
   path   => '/etc/nginx/sites-enabled/default',
   line   => '^\tserver_name _;',
-  match  => '\tserver_name _;\n\n\tlocation /redirect_me \{\n\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\n\t\}\n",
+  match  => '\tserver_name _;\n\n\tlocation /redirect_me \{\n\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\n\t\}\n',
 }
