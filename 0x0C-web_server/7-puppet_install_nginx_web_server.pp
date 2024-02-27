@@ -16,7 +16,7 @@ package { 'ufw':
 }
 
 exec { 'listen to 80':
-  command => 'ufw allow "Nginx HTTP"',
+  command => '/usr/sbin/ufw allow "Nginx HTTP"',
   require => Package['ufw', 'nginx'],
 }
 
