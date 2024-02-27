@@ -7,7 +7,7 @@ include stdlib
 
 package { 'nginx'
   ensure   => latest,
-  provider => 'apt-get',
+  provider => 'apt',
 }
 
 package { 'ufw'
