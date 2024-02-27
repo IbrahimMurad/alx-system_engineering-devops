@@ -26,3 +26,16 @@ file { 'main page':
   require => Package['nginx'],
   content => 'Hello World!"\n"',
 }
+file_line { 'redirect_me':
+  ensure => present,
+  path   => '/etc/nginx/sites-enabled/default',
+  match   => '^\tserver_name _;',
+  line  => "  server_name _;
+
+	location /redirect_me {
+
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+
+	}
+",
+}
