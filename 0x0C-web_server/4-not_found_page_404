@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-# Configure your Nginx server so that /redirect_me is redirecting to another page.
-# The redirection must be a “301 Moved Permanently”
+# Script that installs Nginx server, redirects /redirect_me and customizes 404 not found
 
-apt-get update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-service nginx start
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page\n" > /var/www/html/404.html
-old_line="\tserver_name _;"
-new_line="\tserver_name _;\n\n\terror_page 404 \/404.html;\n\n\tlocation = \/404.html {\n\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}\n"
-sed -i "s/$old_line/$new_line/" /etc/nginx/sites-enabled/default
-sed -i "s/$old_line/$new_line/" /etc/nginx/sites-available/default
-service nginx restart
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+newlines="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
+sudo sed -i "27i $newlines" /etc/nginx/sites-available/default
+sudo service nginx restart
