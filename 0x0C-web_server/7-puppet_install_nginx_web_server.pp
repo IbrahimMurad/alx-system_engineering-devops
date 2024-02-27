@@ -3,6 +3,7 @@
 #   When querying Nginx at its root / with a GET request (requesting a page) using curl, it must return a page that contains the string Hello World!
 #   The redirection must be a “301 Moved Permanently”
 
+include stdlib
 
 package { 'nginx'
   ensure   => latest,
