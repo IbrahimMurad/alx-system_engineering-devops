@@ -13,7 +13,7 @@ sed -i "s/$old_line/$new_line/" /etc/nginx/sites-enabled/default
 sed -i "s/$old_line/$new_line/" /etc/nginx/sites-available/default
 service nginx restart
 echo "Ceci n'est pas une page" > /var/www/404.html
-error_404="\tserver_name _;\n\n\terror_page 404 /404.html;\n\n\tlocation = \/404.html {\n\n\t\troot /var/www/404.html;\n\n\t}\n"
+error_404="\tserver_name _;\n\n\terror_page 404 /var/www/404.html;\n"
 sed -i "s/$old_line/$redirect_301/" /etc/nginx/sites-enabled/default
 sed -i "s/$old_line/$error_404/" /etc/nginx/sites-available/default
 service nginx restart
