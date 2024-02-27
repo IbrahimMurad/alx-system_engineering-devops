@@ -16,7 +16,7 @@ package { 'ufw':
 }
 
 exec { 'listen to 80':
-  command => '/usr/sbin/ufw allow Nginx HTTP',
+  command => '/usr/sbin/ufw allow \'Nginx HTTP\'',
   require => Package['ufw', 'nginx'],
 }
 
@@ -29,8 +29,8 @@ file { 'main page':
 file_line { 'redirect_me':
   ensure => present,
   path   => '/etc/nginx/sites-enabled/default',
-  match   => '^\tserver_name _;',
-  line  => "  server_name _;
+  match   => '^\nserver_name _;',
+  line  => "	server_name _;
 
 	location /redirect_me {
 
@@ -38,4 +38,9 @@ file_line { 'redirect_me':
 
 	}
 ",
+}
+service { 'nginx':
+  ensure    => running,
+  enable    => true,
+  subscribe => File['main page', 'redirect_me'],
 }
