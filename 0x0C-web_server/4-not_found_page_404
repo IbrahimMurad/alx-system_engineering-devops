@@ -5,9 +5,9 @@
 apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
+service nginx start
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page\n" > /var/www/html/404.html
-service nginx start
 old_line="\tserver_name _;"
 new_line="\tserver_name _;\n\n\tlocation \/redirect_me {\n\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t}\n\n\terror_page 404 \/404.html;\n\n\tlocation = \/404.html {\n\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}\n"
 sed -i "s/$old_line/$new_line/" /etc/nginx/sites-enabled/default
