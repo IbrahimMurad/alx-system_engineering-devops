@@ -5,8 +5,8 @@
 
 apt-get update
 apt-get install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.0
-apt-get install -y haproxy=2.0.\*
+add-apt-repository ppa:vbernat/haproxy-2.6
+apt-get install -y haproxy=2.6.\*
 echo "
 frontend my_frontend
 	bind *:80
