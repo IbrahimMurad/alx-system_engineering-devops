@@ -4,6 +4,8 @@
 #	configure it to send traffic to web-01 and web-02 using a roundrobin algorithm
 
 apt-get update
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.0
 apt-get install -y haproxy=2.0.\*
 echo "
 
