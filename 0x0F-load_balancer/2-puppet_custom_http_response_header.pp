@@ -1,0 +1,11 @@
+# configures a brand new Ubuntu machine to the following:
+# install nginx
+# congigure it to lesten to port 80
+# print Hello World! when called by curl
+# redirect to another web page when calling /redirec_me
+# a custom message for 404 not found
+
+exec { 'setup':
+  provider => shell,
+  command  => 'apt-get update; apt-get -y install nginx; ufw allow "Nginx HTTP"; echo "Hello World!" > /var/www/html/index.nginx-debian.html; service nginx start; echo "Ceci n\'est pas une page" > /var/www/html/404.html; old_line="\tserver_name _;"; new_line="\tserver_name _;\n\n\tlocation \/redirect_me {\n\n\t\treturn 301 https:\/\/www.youtube.com;\n\t}\n\n\terror_page 404 \/404.html;\n\n\tlocation = \/404.html {\n\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}\n"; sed -i "s/$old_line/$new_line/" /etc/nginx/sites-enabled/default; sed -i "/	server_name _;/ a\	add_header \'X-Served-By\' \$HOSTNAME;" /etc/nginx/sites-enabled/default; service nginx restart',
+}
