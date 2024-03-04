@@ -8,7 +8,6 @@ apt-get install --no-install-recommends software-properties-common
 add-apt-repository ppa:vbernat/haproxy-2.0
 apt-get install -y haproxy=2.0.\*
 echo "
-
 frontend my_frontend
 	bind *:80
 	mode http
@@ -20,5 +19,4 @@ backend web_servers
 	server 446922-web-01 100.25.170.65:80 check
 	server 446922-web-02 54.172.165.136:80 check
 " >> /etc/haproxy/haproxy.cfg
-update-rc.d haproxy defaults
 service haproxy restart
