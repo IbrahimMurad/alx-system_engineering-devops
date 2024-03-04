@@ -3,9 +3,11 @@
 #	install haproxy
 #	configure it to send traffic to web-01 and web-02 using a roundrobin algorithm
 
-apt-get update
-apt-get install -y haproxy=2.0.\*
-echo "
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.0
+sudo apt-get update
+sudo apt-get install -y haproxy=2.0.\*
+sudo echo "
 listen web_servers
 	bind *:80
 	mode http
@@ -13,6 +15,6 @@ listen web_servers
 	server 446922-web-01 100.25.170.65:80 check
 	server 446922-web-02 54.172.165.136:80 check
 " >> /etc/haproxy/haproxy.cfg
-echo 'ENABLED=1
+sudo echo 'ENABLED=1
 ' >> /etc/default/haproxy
-service haproxy restart
+sudo service haproxy restart
