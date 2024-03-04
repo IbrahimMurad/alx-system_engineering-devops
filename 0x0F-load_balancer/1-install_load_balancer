@@ -8,14 +8,15 @@ apt-get install -y haproxy=2.0.\*
 echo "
 
 frontend my_frontend
-        bind *:80
-        mode http
-        default_backend web_servers
+	bind *:80
+	mode http
+	default_backend web_servers
 
 backend web_servers
-        mode http
-        balance roundrobin
-        server 446922-web-01 100.25.170.65:80 check
-        server 446922-web-02 54.172.165.136:80 check" >> /etc/haproxy/haproxy.cfg
+	mode http
+	balance roundrobin
+	server 446922-web-01 100.25.170.65:80 check
+	server 446922-web-02 54.172.165.136:80 check
+" >> /etc/haproxy/haproxy.cfg
 service haproxy restart
 update-rc.d haproxy defaults
