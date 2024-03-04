@@ -5,7 +5,9 @@
 
 apt-get update
 apt-get install -y haproxy=2.0.\*
-echo "frontend my_frontend
+echo "
+
+frontend my_frontend
         bind *:80
         mode http
         default_backend web_servers
