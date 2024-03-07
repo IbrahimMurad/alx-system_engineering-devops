@@ -34,12 +34,13 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 
 frontend ssl_front
-        bind *:443 ssl crt /etc/haproxy/www.physma.tech.pem
         mode http
+        bind :80
+        bind *:443 ssl crt /etc/haproxy/www.physma.tech.pem
+        http-request redirect scheme https code 301 unless { ssl_fc }
         default_backend my_servers
 
 backend my_servers
-        redirect scheme https if !{ ssl_fc }
         balance roundrobin
         server 446922-web-01 100.25.170.65:80 check
         server 446922-web-02 54.172.165.136:80 check
