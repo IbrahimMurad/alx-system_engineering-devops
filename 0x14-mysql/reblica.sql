@@ -14,3 +14,5 @@ FLUSH PRIVILEGES;
 CREATE USER 'replica_user'@'%' IDENTIFIED BY 'replica_pass';
 GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
 GRANT SELECT ON mysql.user TO 'holberton_user'@localhost;
+
+CHANGE MASTER TO SOURCE_HOST='100.25.170.65', SOURCE_USER='replica_user', SOURCE_PASSWORD='replica_pass', SOURCE_LOG_FILE='mysql-bin.000001', SOURCE_LOG_POS=154;
