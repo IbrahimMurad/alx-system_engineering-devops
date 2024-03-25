@@ -20,7 +20,7 @@ if __name__ == '__main__':
     users = loads(users_data_fetched.read().decode())
     EMPLOYEE_NAME = next(
         x for x in users if x.get('id') == employee_ID
-        ).get('name')
+        ).get('username')
 
     with open('{}.csv'.format(employee_ID), mode='a', encoding='utf-8') as f:
         for task in todo_of_employee:
