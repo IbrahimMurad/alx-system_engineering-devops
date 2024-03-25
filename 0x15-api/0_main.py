@@ -12,32 +12,25 @@ todos_url = "https://jsonplaceholder.typicode.com/todos"
 
 
 def user_info(id):
-    """ Check user information """
+    """ Check CSV formatting """
 
-    total_tasks = 0
     response = requests.get(todos_url).json()
-    for i in response:
-        if i['userId'] == id:
-            total_tasks += 1
-
-    response = requests.get(users_url + str(id)).json()
-    username = response[0]['username']
-    print(username)
-
-    flag = 0
     with open(str(id) + ".csv", 'r') as f:
-        for line in f:
-            print(line)
-            if not line == '\n':
-                if not str(id) in line:
-                    print("User ID: Incorrect / ", end='')
-                    flag = 1
-                if not str(username) in line:
-                    print("Username: Incorrect")
+        output = f.read().strip()
+        count = 0
+        flag = 0
+        for i in response:
+            if i['userId'] == id:
+                url = users_url + str(i['userId'])
+                usr_resp = requests.get(url).json()
+                line = '"' + str(i['userId']) + '","' + usr_resp[0]['username'] + '","' + str(i['completed']) + '","' + i['title'] + '"'
+                count += 1
+                if not line in output:
+                    print("Task {} Formatting: Incorrect".format(count))
                     flag = 1
 
     if flag == 0:
-        print("User ID and Username: OK")
+        print("Formatting: OK")
 
 
 if __name__ == "__main__":
