@@ -4,9 +4,10 @@ using this REST API, for a given employee ID, returns information
 about his/her TODO list progress.
 """
 
-from urllib.request import urlopen
 from json import loads
 from sys import argv
+from urllib.request import urlopen
+
 
 if __name__ == '__main__':
     employee_ID = int(argv[1])
