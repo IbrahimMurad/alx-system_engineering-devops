@@ -29,10 +29,10 @@ if __name__ == '__main__':
             completed = todo.get('completed')
             todo.pop('completed')
             todo.update({
-            	'task': todo.get('title'),
-            	'completed': completed,
-            	'username': username
-            	})
+                'task': todo.get('title'),
+                'completed': completed,
+                'username': username
+                })
             todo.pop('title')
             todo.pop('id')
             todo.pop('userId')
