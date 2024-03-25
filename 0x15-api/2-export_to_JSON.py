@@ -26,7 +26,11 @@ if __name__ == '__main__':
     for todo in todo_of_employee:
         completed = todo.get('completed')
         todo.pop('completed')
-        todo.update({'task': todo.get('title'), 'completed': completed, 'username': username})
+        todo.update({
+            'task': todo.get('title'),
+            'completed': completed,
+            'username': username
+            })
         todo.pop('title')
         todo.pop('id')
         todo.pop('userId')
