@@ -22,7 +22,6 @@ def recurse(subreddit, hot_list=[]):
         data = response.json()['data']
         hot_list.append(data['after'])
         title_arr = [post['data']['title'] for post in data['children']]
-        [print(title) for title in title_arr]
         next_page = recurse(subreddit, hot_list)
         title_arr.extend(next_page)
         return title_arr

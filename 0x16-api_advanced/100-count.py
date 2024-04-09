@@ -22,7 +22,6 @@ def recurse(subreddit, hot_list=[]):
         data = response.json()['data']
         hot_list.append(data['after'])
         title_arr = [post['data']['title'] for post in data['children']]
-        [print(title) for title in title_arr]
         next_page = recurse(subreddit, hot_list)
         title_arr.extend(next_page)
         return title_arr
@@ -36,7 +35,6 @@ def recurse(subreddit, hot_list=[]):
 def count_words(subreddit, word_list):
     all_titles = " ".join(recurse(subreddit))
     titles_words = [word for word in all_titles.split(' ') if word]
-    word_list = [word for word in " ".split(word_list) if word]
     [print("{}: {}".format(
         word, titles_words.count(word)
     )) for word in word_list]
