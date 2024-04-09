@@ -31,3 +31,12 @@ def recurse(subreddit, hot_list=[]):
             return []
         else:
             return None
+
+
+def count_words(subreddit, word_list):
+    all_titles = " ".join(recurse(subreddit))
+    titles_words = [word for word in all_titles.split(' ') if word]
+    word_list = [word for word in " ".split(word_list) if word]
+    [print("{}: {}".format(
+        word, titles_words.count(word)
+    )) for word in word_list]
