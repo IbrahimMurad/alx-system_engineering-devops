@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" This module defines a functions that
+"""
+This module defines a functions that
 fetches the number of subscribers for a subreddit.
 """
 
