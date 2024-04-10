@@ -33,8 +33,18 @@ def recurse(subreddit, hot_list=[]):
 
 
 def count_words(subreddit, word_list):
-    all_titles = " ".join(recurse(subreddit))
+    array_of_titles = recurse(subreddit)
+    if not array_of_titles:
+        return
+    word_list = [str(word).lower() for word in word_list]
+    all_titles = " ".join(array_of_titles).lower()
     titles_words = [word for word in all_titles.split(' ') if word]
-    [print("{}: {}".format(
-        word, titles_words.count(word)
-    )) for word in word_list]
+    word_count = [(word, titles_words.count(word))
+                  for word in word_list
+                  if titles_words.count(word) != 0
+                  ]
+    word_count_dict = {}
+    for key, value in word_count:
+        word_count_dict[key] = value + word_count_dict.get(key, 0)
+    [print("{}: {}".format(key, value))
+     for key, value in word_count_dict.items()]
