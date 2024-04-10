@@ -13,11 +13,11 @@ def top_ten(subreddit):
     para = {'limit': 10}
     try:
         response = requests.get(
-        url,
-        headers=header,
-        params=para,
-        allow_redirects=False
-        )
+            url,
+            headers=header,
+            params=para,
+            allow_redirects=False
+            )
         if response.status_code == 200:
             data = response.json()['data']['children']
             for post in data:
