@@ -79,11 +79,11 @@ server {
 		add_header 'X-Served-By' $HOSTNAME;
 	}
 
-        location /airbnb-dynamic/number_odd_or_even/ {
+    location /airbnb-dynamic/number_odd_or_even/ {
 
-                proxy_pass http://localhost:5001/number_odd_or_even/;
-                add_header 'X-Served-By' $HOSTNAME;
-        }
+            proxy_pass http://localhost:5001/number_odd_or_even/;
+            add_header 'X-Served-By' $HOSTNAME;
+    }
 
 
 	# pass PHP scripts to FastCGI server
