@@ -44,7 +44,7 @@ server {
 	index index.html index.htm index.nginx-debian.html;
 
 	server_name _;
- 	location /hbnb_static/ {
+	location /hbnb_static/ {
 		alias /data/web_static/current/;
 		autoindex off;
 	}
@@ -76,7 +76,6 @@ server {
 	location /airbnb-onepage/ {
 
 		proxy_pass http://localhost:5000/airbnb-onepage/;
-		add_header 'X-Served-By' $HOSTNAME;
 	}
 
 	# pass PHP scripts to FastCGI server

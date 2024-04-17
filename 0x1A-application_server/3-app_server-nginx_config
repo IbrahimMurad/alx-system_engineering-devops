@@ -44,7 +44,7 @@ server {
 	index index.html index.htm index.nginx-debian.html;
 
 	server_name _;
- 	location /hbnb_static/ {
+	location /hbnb_static/ {
 		alias /data/web_static/current/;
 		autoindex off;
 	}
@@ -76,13 +76,11 @@ server {
 	location /airbnb-onepage/ {
 
 		proxy_pass http://localhost:5000/airbnb-onepage/;
-		add_header 'X-Served-By' $HOSTNAME;
 	}
 
     location /airbnb-dynamic/number_odd_or_even/ {
 
             proxy_pass http://localhost:5001/number_odd_or_even/;
-            add_header 'X-Served-By' $HOSTNAME;
     }
 
 

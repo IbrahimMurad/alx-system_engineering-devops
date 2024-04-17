@@ -66,28 +66,27 @@ server {
 	}
 
     location / {
-            proxy_pass http://localhost:5003/;
-            add_header 'X-Served-By' $HOSTNAME;
+            proxy_pass http://localhost:5003/2-hbnb/;
     }
 
+	location /static {
+            proxy_pass http://localhost:5003/;
+    }
 
 	location /airbnb-onepage/ {
 
 		proxy_pass http://localhost:5000/airbnb-onepage/;
-		add_header 'X-Served-By' $HOSTNAME;
 	}
 
     location /airbnb-dynamic/number_odd_or_even/ {
 
             proxy_pass http://localhost:5001/number_odd_or_even/;
-            add_header 'X-Served-By' $HOSTNAME;
     }
 
 
     location /api/ {
 
             proxy_pass http://localhost:5002/api/;
-            add_header 'X-Served-By' $HOSTNAME;
 	}
 
 
