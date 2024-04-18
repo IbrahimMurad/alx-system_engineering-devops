@@ -3,8 +3,4 @@
 
 # Get the pid of the gunicorn process
 
-pid=$(pgrep gunicorn | head -c 1 | tr -d '\n')
-
-# Send HUP signal to the process
-
-sudo kill -HUP "$pid"
+pgrep gunicorn | tr '\n' ' ' | xargs kill -HUP
