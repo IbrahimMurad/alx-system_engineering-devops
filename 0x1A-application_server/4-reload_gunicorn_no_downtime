@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # This script reloads gunicorn in graceful way
 
-pgrep gunicorn | head -n 1 | tr -d '\n' | xargs kill -HUP
+# Get the pid of the gunicorn process
+
+ps aux | grep gunicorn | grep 'web_dynamic.2-hbnb:app' | awk 'NR==1 {print $2}' | xargs kill -HUP
