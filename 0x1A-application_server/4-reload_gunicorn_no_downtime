@@ -3,4 +3,6 @@
 
 # Get the pid of the gunicorn process
 
-ps aux | grep gunicorn | grep 'web_dynamic.2-hbnb:app' | awk 'NR==1 {print $2}' | xargs kill -HUP
+pid=$(sudo systemctl status gunicorn | grep 'Main PID' | awk '{print $3}')
+
+sudo kill -HUP "$pid"
