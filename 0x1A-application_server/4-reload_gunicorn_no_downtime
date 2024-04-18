@@ -3,7 +3,7 @@
 
 # Get the pid of the gunicorn process
 
-pid=$(ps aux | grep -m 1'gunicorn' | awk '{print $2}')
+pid=$(pgrep gunicorn | head -c 1 | tr -d '\n')
 
 # Send HUP signal to the process
 
