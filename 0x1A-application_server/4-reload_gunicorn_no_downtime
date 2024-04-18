@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # This script reloads gunicorn in graceful way
 
-# Get the pid of the gunicorn process
-
 pgrep gunicorn | head -n 1 | tr -d '\n' | xargs kill -HUP
