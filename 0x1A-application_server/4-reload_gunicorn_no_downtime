@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script reloads gunicorn in graceful way
+
+# Get the pid of the gunicorn process
+
+pid=$(sudo systemctl status gunicorn | grep "Main PID" | cut -d ' ' -f 6)
+
+# Send HUP signal to the process
+
+sudo kill -HUP "$pid"
