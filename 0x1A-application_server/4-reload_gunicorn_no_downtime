@@ -3,4 +3,4 @@
 
 # Get the pid of the gunicorn process
 
-pgrep gunicorn | tr '\n' ' ' | xargs kill -HUP
+pgrep gunicorn | head -n 1 | tr -d '\n' | xargs kill -HUP
